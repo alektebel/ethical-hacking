@@ -1,0 +1,69 @@
+# Compiled binaries
+*.o
+*.out
+*.exe
+*.elf
+*.bin
+
+# Assembly artifacts
+*.lst
+
+# C/C++ artifacts
+*.so
+*.a
+*.dylib
+
+# Debug files
+*.dSYM/
+*.su
+
+# Core dumps
+core
+core.*
+
+# Editor artifacts
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+*.sublime-*
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+
+# Build directories
+build/
+dist/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Log files
+*.log
+
+# Packet captures
+*.pcap
+*.pcapng
+*.cap
+
+# Credentials and sensitive data (should never be committed!)
+*.key
+*.pem
+*.crt
+*_rsa
+*_dsa
+*.secret
+credentials.*
