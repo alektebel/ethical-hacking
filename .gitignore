@@ -5,6 +5,13 @@
 *.elf
 *.bin
 
+# Specific project binaries
+port_scanner
+packet_sniffer
+keylogger
+reverse_shell
+persistence
+
 # Assembly artifacts
 *.lst
 

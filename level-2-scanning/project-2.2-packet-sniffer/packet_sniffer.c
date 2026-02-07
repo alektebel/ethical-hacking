@@ -85,6 +85,7 @@ void print_ethernet(unsigned char *buffer) {
 void print_ip(unsigned char *buffer) {
     struct iphdr *ip = (struct iphdr *)(buffer + sizeof(struct ethhdr));
     struct sockaddr_in source, dest;
+    char source_ip[INET_ADDRSTRLEN];
     
     memset(&source, 0, sizeof(source));
     source.sin_addr.s_addr = ip->saddr;
@@ -92,9 +93,11 @@ void print_ip(unsigned char *buffer) {
     memset(&dest, 0, sizeof(dest));
     dest.sin_addr.s_addr = ip->daddr;
     
-    printf("IP: %s -> %s", 
-           inet_ntoa(source.sin_addr),
-           inet_ntoa(dest.sin_addr));
+    // Store first IP address to avoid inet_ntoa() overwriting issue
+    strncpy(source_ip, inet_ntoa(source.sin_addr), INET_ADDRSTRLEN - 1);
+    source_ip[INET_ADDRSTRLEN - 1] = '\0';
+    
+    printf("IP: %s -> %s", source_ip, inet_ntoa(dest.sin_addr));
     
     switch (ip->protocol) {
         case IPPROTO_TCP:
@@ -224,6 +227,7 @@ int enable_promiscuous_mode(int sock, const char *interface) {
     
     memset(&ifr, 0, sizeof(ifr));
     strncpy(ifr.ifr_name, interface, IFNAMSIZ - 1);
+    ifr.ifr_name[IFNAMSIZ - 1] = '\0';  // Ensure null termination
     
     // Get current flags
     if (ioctl(sock, SIOCGIFFLAGS, &ifr) == -1) {
