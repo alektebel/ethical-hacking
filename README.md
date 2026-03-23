@@ -43,6 +43,7 @@ Learning how exploits work
 - **Project 4.1**: Shellcode Development
 - **Project 4.2**: Writing Basic Exploits
 - **Project 4.3**: Bypass Techniques (ASLR, DEP)
+- **Project 4.4**: Malware Analysis & Creation (Educational)
 
 ### Level 5: Advanced Topics
 Specialized security topics
